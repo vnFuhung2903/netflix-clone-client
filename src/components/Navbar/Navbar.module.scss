@@ -1,0 +1,80 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    display: flex;
+    background-color: black;
+    height: 3.8em;
+    padding: 0 1.95rem;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+    
+    &_link {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        text-decoration: none;
+        font-size: 1.2rem;
+
+        &_logo {
+            img {
+                height: 3.65rem;
+            }
+        }
+
+        &-1rem {
+            font-size: 1rem;
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+
+    &_user {
+        gap: 2rem;
+        display: flex;
+        align-items: center;
+        .searchbar {
+            outline: none;
+            display: flex;
+            height: 1.2rem;
+            align-items: center;
+            gap: 0.5rem;
+
+            button {
+                background-color: transparent;
+                color: white;
+                border: none;
+                font-size: 1.2rem;
+                cursor: pointer;
+            }
+
+            input {
+                width: 20vw;
+                padding: 5%;
+                visibility: hidden;
+                font-size: 0.8rem;
+            }
+
+            &-visible {
+                input {
+                    width: 20vw;
+                    visibility: visible;
+                    border-radius: 10px;
+                    padding: 3% 5%;
+                    outline: none;
+                }
+            }
+        }
+
+        &_icon {
+            background-color: transparent;
+            color: white;
+            border: none;
+            cursor: pointer;
+            height: 1.2rem;
+        }
+    }
+}

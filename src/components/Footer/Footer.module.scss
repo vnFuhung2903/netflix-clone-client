@@ -1,0 +1,20 @@
+.footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(80, 80, 80, 0.3);
+    height: 5rem;
+
+    &_link {
+        display: flex;
+        padding-right: 2%;
+        gap: 80%;
+
+        &_icon {
+            color: white;
+            height: 30px;
+            width: 30px;
+        }
+    }
+}

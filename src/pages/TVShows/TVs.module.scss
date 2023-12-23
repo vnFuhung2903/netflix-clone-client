@@ -1,0 +1,26 @@
+.block_title {
+    position: relative;
+    background-color: rgba(80,80,80,0.3);
+    padding: 3.8rem 2.8rem 3rem 2.8rem;
+    h1 {
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin: 0;
+        padding: 3.2rem 0 0 0;
+    }
+
+    p {
+        font-size: 1.2rem;
+        margin: 0;
+        width: 40vw;
+        padding-top: 0.6rem;
+    }
+}
+
+h4 {
+    padding: 0 2.8rem 1rem 2.8rem;
+    font-size: 1.3rem;
+    font-weight: normal;
+    margin: 0;
+    background-color: rgba(80,80,80,0.3);
+}

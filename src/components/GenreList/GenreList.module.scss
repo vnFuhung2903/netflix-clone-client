@@ -1,0 +1,38 @@
+.slider {
+    background-color: rgba(80, 80, 80, 0.3);
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    padding: 0 1rem 3rem;
+    
+    &_movie {
+        display: inline-block;
+        text-align: center;
+
+        &:hover {
+            filter: brightness(130%);
+        }
+        
+        p {
+            margin: 0;
+            font-size: 1rem;
+            text-wrap: wrap;
+        }
+    }
+}
+
+.button-prev, .button-next {
+    position: relative;
+    top: 75px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: red;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.disabled {
+    opacity: 0;
+    visibility: hidden;
+}

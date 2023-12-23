@@ -1,0 +1,115 @@
+.container-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 70vh;
+    margin-top: 3.8rem;
+    padding: 3.2rem 2.8rem;
+    background-color: rgba(80, 80, 80, 0.3);
+
+    &-2col {
+        grid-column: 1 / span 2;
+
+        h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin: 0;
+            padding-top: 0.6rem;
+        }
+    }
+
+    &-right-grid {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        align-items: center;
+        height: 50vh;
+        
+        .route {
+            font-size: 1.8rem;
+            padding: 1.2rem 0;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .chosen {
+            filter: brightness(150%);
+            border: solid 3px white;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+    }
+}
+
+.slider {
+    background-color: rgba(80, 80, 80, 0.3);
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    padding: 0 1rem 3rem;
+    
+    &_movie {
+        display: inline-block;
+        text-align: center;
+        cursor: pointer;
+
+        &:hover {
+            filter: brightness(130%);
+        }
+        
+        p {
+            margin: 0;
+            font-size: 1rem;
+            text-wrap: wrap;
+        }
+    }
+
+    .button-prev, .button-next {
+        position: relative;
+        top: 75px;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        color: red;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+}
+
+
+.card-grid {
+    background-color: rgba(80, 80, 80, 0.3);
+    padding: 0 2.2rem 3rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    .feature {
+        cursor: pointer;
+
+        &:hover {
+            filter: brightness(130%);
+        }
+    
+        p {
+            font-size: 1rem;
+            margin: 0;
+            padding: 0;
+            text-wrap: wrap;
+            text-align: left;
+            color: white;
+        }
+    }
+}
