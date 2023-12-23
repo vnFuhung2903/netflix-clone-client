@@ -55,7 +55,7 @@ export default function Movie() {
 
     axios.defaults.withCredentials = true;
     useEffect(() => {
-        axios.get(`http://localhost:2903/list/${token}/movie/${id}`)
+        axios.get(`https://netflix-clone-server-fi53.onrender.com/list/${token}/movie/${id}`)
         .then(res => {
             setAdded(res.data.in_list);
         })
@@ -64,7 +64,7 @@ export default function Movie() {
     const AddtoWatchList = () => {
         const type = "movie";
         const feature = Movie;
-        axios.post(`http://localhost:2903/list`, { token, type, feature })
+        axios.post(`https://netflix-clone-server-fi53.onrender.com/list`, { token, type, feature })
         .then((res) => {
             console.log(res.data.in_list);
             setAdded(res.data.in_list);
@@ -74,7 +74,7 @@ export default function Movie() {
     const Watch = () => {
         const type = "movie";
         const feature = Movie;
-        axios.post(`http://localhost:2903/recently`, { token, type, feature })
+        axios.post(`https://netflix-clone-server-fi53.onrender.com/recently`, { token, type, feature })
     }
 
     if(!Movie || !Casts || !Movie.genres) return(<></>)

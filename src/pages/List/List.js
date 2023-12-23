@@ -16,7 +16,7 @@ const List = () => {
     useEffect(() => {
         if(!token)  navigate("/signup");
         else {
-            axios.get(`http://localhost:2903/list/${token}`)
+            axios.get(`https://netflix-clone-server-fi53.onrender.com/list/${token}`)
             .then(res => {
                 setList(res.data.list);
             })

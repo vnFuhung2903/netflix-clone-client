@@ -16,7 +16,7 @@ export default function Login(){
     axios.defaults.withCredentials = true;
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:2903/login", { email, password })
+        axios.post("https://netflix-clone-server-fi53.onrender.com/login", { email, password })
         .then(res => {
             if(res.data.message === "Login success") {
                 sessionStorage.setItem("token", res.data.token);

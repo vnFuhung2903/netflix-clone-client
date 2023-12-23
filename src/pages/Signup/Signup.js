@@ -15,7 +15,7 @@ export default function Signup(){
     axios.defaults.withCredentials = true;
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:2903/signup", { email })
+        axios.post("https://netflix-clone-server-fi53.onrender.com/signup", { email })
         .then(res => {
             if(res.data.message === "Signup success") {
                 navigate("/register", { state: email });

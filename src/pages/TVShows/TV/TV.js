@@ -64,7 +64,7 @@ axios.defaults.withCredentials = true;
 useEffect(() => {
     if(!token)  navigate("/signup");
     else {
-        axios.get(`http://localhost:2903/list/${token}/tv/${id}`)
+        axios.get(`https://netflix-clone-server-fi53.onrender.com/list/${token}/tv/${id}`)
         .then(res => {
             setAdded(res.data.in_list);
         })
@@ -74,7 +74,7 @@ useEffect(() => {
     const AddtoWatchList = () => {
         const type = "tv";
         const feature = TV;
-        axios.post(`http://localhost:2903/list`, { token, type, feature })
+        axios.post(`https://netflix-clone-server-fi53.onrender.com/list`, { token, type, feature })
         .then((res) => {
             setAdded(res.data.in_list);
         })
@@ -83,7 +83,7 @@ useEffect(() => {
     const Watch = () => {
         const type = "tv";
         const feature = TV;
-        axios.post(`http://localhost:2903/recently`, { token, type, feature })
+        axios.post(`https://netflix-clone-server-fi53.onrender.com/recently`, { token, type, feature })
     }
 
     if(!TV || !Casts || !TV.genres) return(<></>)
