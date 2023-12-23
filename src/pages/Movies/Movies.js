@@ -6,7 +6,6 @@ import styles from "./Movies.module.scss";
 
 
 const Movies = () => {
-    const token = sessionStorage.getItem("token");
     const genre_url = `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}`;
     
     const [genreList, setGenreList] = useState([]);
@@ -21,7 +20,7 @@ const Movies = () => {
 
     return (
         <>
-            <Navbar token={token}/>
+            <Navbar/>
             <div className={styles["block_title"]}>
                 <h1>Movies</h1>
                 <p>Movies move us like nothing else can, whether they’re scary, funny, dramatic, romantic or anywhere in-between. So many titles, so much to experience.</p>
@@ -30,7 +29,7 @@ const Movies = () => {
             {genreList.map(({id, name}) => (
                 <>
                     <h4>{name} Movies</h4>
-                    <GenreList type={"movie"} genre_id={id} token={token} />
+                    <GenreList type={"movie"} genre_id={id}/>
                 </>
             ))}
             <Footer/>

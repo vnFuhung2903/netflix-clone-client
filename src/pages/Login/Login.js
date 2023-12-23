@@ -11,15 +11,16 @@ export default function Login(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [rememberMe, setRememberMe] = useState(0);
     const navigate = useNavigate();
 
     axios.defaults.withCredentials = true;
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("https://netflix-clone-server-fi53.onrender.com/login", { email, password })
+        axios.post("https://netflix-clone-server-fi53.onrender.com/login", { email, password, rememberMe })
         .then(res => {
             if(res.data.message === "Login success") {
-                sessionStorage.setItem("token", res.data.token);
+                console.log(res.data.token);
                 navigate("/app");
             }
             else {
@@ -66,7 +67,11 @@ export default function Login(){
                         </div>
                         <div className={styles["card-jcenter-flex"]}>
                             <div className={styles["card-jcenter-flex_checkbox"]}>
-                                <input type="checkbox" name="Remember-me"/>
+                                <input 
+                                    type="checkbox" 
+                                    name="Remember-me"
+                                    onChange={(e) => setRememberMe(e.target.checked)}
+                                />
                                 <label>Remember me</label>
                             </div>
                             <a href="/">Need help?</a>

@@ -14,7 +14,6 @@ const image_url = 'https://image.tmdb.org/t/p/original';
 
 export default function Movie() {
     const { id } = useParams();
-    const token = sessionStorage.getItem("token");
     
     const details_url = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}`;
     const credits_url = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}`;
@@ -26,7 +25,6 @@ export default function Movie() {
     const [recommended, setRecommended] = useState([]);
     const [added, setAdded] = useState(false);
     const navigate = useNavigate();
-    if(!token)  navigate("/signup");
 
     useEffect(() => {
         fetch(details_url)
@@ -55,16 +53,21 @@ export default function Movie() {
 
     axios.defaults.withCredentials = true;
     useEffect(() => {
-        axios.get(`https://netflix-clone-server-fi53.onrender.com/list/${token}/movie/${id}`)
+        axios.get(`https://netflix-clone-server-fi53.onrender.com/list/movie/${id}`)
         .then(res => {
-            setAdded(res.data.in_list);
+            if(res.data.message === "Unauthorized") {
+                navigate("/signup");
+            }
+            else {
+                setAdded(res.data.in_list);
+            }
         })
-    }, [id, token, added])
+    }, [id, added])
 
     const AddtoWatchList = () => {
         const type = "movie";
         const feature = Movie;
-        axios.post(`https://netflix-clone-server-fi53.onrender.com/list`, { token, type, feature })
+        axios.post("https://netflix-clone-server-fi53.onrender.com/list", { type, feature })
         .then((res) => {
             console.log(res.data.in_list);
             setAdded(res.data.in_list);
@@ -74,14 +77,14 @@ export default function Movie() {
     const Watch = () => {
         const type = "movie";
         const feature = Movie;
-        axios.post(`https://netflix-clone-server-fi53.onrender.com/recently`, { token, type, feature })
+        axios.post("https://netflix-clone-server-fi53.onrender.com/recently", { type, feature })
     }
 
     if(!Movie || !Casts || !Movie.genres) return(<></>)
 
     return (
         <>
-            <Navbar token={token}/>
+            <Navbar/>
             <div className={styles["container"]}>
                 <img src={image_url + Movie.backdrop_path}/>
                 <div className={styles["container-grid"]}>

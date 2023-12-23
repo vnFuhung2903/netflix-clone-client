@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import styles from "./Navbar.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,7 +8,7 @@ import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import logo from '../../01_Netflix_Logo_RGB/Netflix_Logo_RGB.png';
 
 
-export default function Navbar({token}){
+export default function Navbar(){
 
     const links = [
         { name: "Home", link: "/app"},
@@ -20,20 +21,21 @@ export default function Navbar({token}){
     const [showSearch, setShowSearch] = useState(0);
     const navigate = useNavigate();
 
+    axios.defaults.withCredentials = true;
     const handleSignout = () => {
-        sessionStorage.removeItem("token"); 
+        axios.get("https://netflix-clone-server-fi53.onrender.com/logout")
         navigate("/signup"); 
     }
 
     return (
         <nav className={styles["navbar"]}>
             <div className={styles["navbar_link"]}>
-                <Link to={`/app`} state={token} className={styles["navbar_link_logo"]} reloadDocument={true}>
+                <Link to={`/app`} className={styles["navbar_link_logo"]} reloadDocument={true}>
                     <img src={logo}/>
                 </Link>
                 {links.map(({name, link}) => (
                     <div key={name} className={styles["navbar_link-1rem"]}>
-                        <Link to={link} state={token}>{name}</Link>
+                        <Link to={link} >{name}</Link>
                     </div>
                 ))}
              </div>

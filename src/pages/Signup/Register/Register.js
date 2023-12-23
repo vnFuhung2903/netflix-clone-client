@@ -16,7 +16,6 @@ export default function Register() {
         e.preventDefault();
         axios.post("https://netflix-clone-server-fi53.onrender.com/register", { email, password, phone, name })
         .then((res) => {
-            sessionStorage.setItem("token", res.data.token)
             navigate("/app");
         })
     }

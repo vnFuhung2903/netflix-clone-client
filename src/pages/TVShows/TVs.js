@@ -6,7 +6,6 @@ import styles from "./TVs.module.scss";
 
 
 const TVs = () => {
-    const token = sessionStorage.getItem("token");
     const genre_url = `https://api.themoviedb.org/3/genre/tv/list?api_key=${process.env.REACT_APP_API_KEY}`;
     
     const [genreList, setGenreList] = useState([]);
@@ -21,7 +20,7 @@ const TVs = () => {
 
     return (
         <>
-            <Navbar token={token}/>
+            <Navbar/>
             <div className={styles["block_title"]}>
                 <h1>TV Shows</h1>
                 <p>These days, the small screen has some very big things to offer. From sitcoms to dramas to travel and talk shows, these are all the best programs on TV.</p>
@@ -30,7 +29,7 @@ const TVs = () => {
             {genreList.map(({id, name}) => (
                 <>
                     <h4>{name} TV Shows</h4>
-                    <GenreList type={"tv"} genre_id={id} token={token} />
+                    <GenreList type={"tv"} genre_id={id}/>
                 </>
             ))}
             <Footer/>

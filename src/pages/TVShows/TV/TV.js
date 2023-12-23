@@ -15,7 +15,6 @@ const image_url = 'https://image.tmdb.org/t/p/original';
 
 export default function TV() {
     const { id } = useParams();
-    const token = sessionStorage.getItem("token");
     
     const details_url = `https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.REACT_APP_API_KEY}`;
     const credits_url = `https://api.themoviedb.org/3/tv/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}`;
@@ -42,39 +41,41 @@ export default function TV() {
             temp.push(i + 1);
         setNum_of_ss(temp)
     })
-}, [id]);
+    }, [id]);
 
-useEffect(() => {
-    fetch(credits_url)
-    .then(res => res.json())
-    .then(res => {
-        setCasts(res.cast);
-    })
-}, [id]);
-
-useEffect(() => {
-    fetch(recommendations_url)
-    .then(res => res.json())
-    .then(res => {
-        setRecommended(res.results);
-    })
-}, [id])
-
-axios.defaults.withCredentials = true;
-useEffect(() => {
-    if(!token)  navigate("/signup");
-    else {
-        axios.get(`https://netflix-clone-server-fi53.onrender.com/list/${token}/tv/${id}`)
+    useEffect(() => {
+        fetch(credits_url)
+        .then(res => res.json())
         .then(res => {
-            setAdded(res.data.in_list);
+            setCasts(res.cast);
         })
-    }
+    }, [id]);
+
+    useEffect(() => {
+        fetch(recommendations_url)
+        .then(res => res.json())
+        .then(res => {
+            setRecommended(res.results);
+        })
+    }, [id])
+
+    axios.defaults.withCredentials = true;
+    useEffect(() => {
+        axios.get(`https://netflix-clone-server-fi53.onrender.com/list/tv/${id}`)
+        .then(res => {
+            if(res.data.message === "Unauthorized") {
+                navigate("/signup");
+            }
+            else {
+                setAdded(res.data.in_list);
+            }
+        })
     }, [added])
 
     const AddtoWatchList = () => {
         const type = "tv";
         const feature = TV;
-        axios.post(`https://netflix-clone-server-fi53.onrender.com/list`, { token, type, feature })
+        axios.post("https://netflix-clone-server-fi53.onrender.com/list", { type, feature })
         .then((res) => {
             setAdded(res.data.in_list);
         })
@@ -83,14 +84,14 @@ useEffect(() => {
     const Watch = () => {
         const type = "tv";
         const feature = TV;
-        axios.post(`https://netflix-clone-server-fi53.onrender.com/recently`, { token, type, feature })
+        axios.post("https://netflix-clone-server-fi53.onrender.com/recently", { type, feature })
     }
 
     if(!TV || !Casts || !TV.genres) return(<></>)
 
     return (
         <>
-            <Navbar token={token}/>
+            <Navbar/>
             <div className={styles["container"]}>
                 <img src={image_url + TV.backdrop_path}/>
                 <div className={styles["container-grid"]}>

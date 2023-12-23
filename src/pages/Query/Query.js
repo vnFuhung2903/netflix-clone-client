@@ -8,7 +8,6 @@ const image_url = 'https://image.tmdb.org/t/p/original';
 
 const Query = () => {
     const { search } = useParams();
-    const token = sessionStorage.getItem("token");
     const [movieList, setMovieList] = useState([]);
     const [tvList, setTVList] = useState([]);
 
@@ -21,7 +20,7 @@ const Query = () => {
         .then(res => {
             setMovieList(res.results);
         })
-    }, [token, search])
+    }, [search])
 
     useEffect(() => {
         fetch(search_tv_url)
@@ -29,13 +28,13 @@ const Query = () => {
         .then(res => {
             setTVList(res.results);
         })
-    }, [token, search])
+    }, [search])
     
     if(!movieList)   return (<></>)
 
     return (
         <>
-            <Navbar token={token}/>
+            <Navbar/>
             <h1>Searched for {search}</h1>
             <div className={styles["container-grid-6col"]}>
                 {movieList.map((movie) => (

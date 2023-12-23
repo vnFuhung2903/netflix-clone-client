@@ -14,18 +14,20 @@ const List = () => {
     
     axios.defaults.withCredentials = true;
     useEffect(() => {
-        if(!token)  navigate("/signup");
-        else {
-            axios.get(`https://netflix-clone-server-fi53.onrender.com/list/${token}`)
-            .then(res => {
+        axios.get(`https://netflix-clone-server-fi53.onrender.com/list`)
+        .then(res => {
+            if(res.data.message === "Unauthorized") {
+                navigate("/signup");
+            }
+            else {
                 setList(res.data.list);
-            })
-        }
+            }
+        })
     }, [token])
     
     return (
         <>
-            <Navbar token={token}/>
+            <Navbar/>
             <h1>My List</h1>
             <div className={styles["container-grid-6col"]}>
                 {list.map((movie) => (

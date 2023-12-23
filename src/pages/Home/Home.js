@@ -15,9 +15,7 @@ import "swiper/css/navigation";
 const image_url = 'https://image.tmdb.org/t/p/w300';
 
 export default function Home()
-{
-    const token = sessionStorage.getItem("token");
-    
+{    
     const routeList = [
         {
             "name": "Movies",
@@ -45,19 +43,22 @@ export default function Home()
     
     axios.defaults.withCredentials = true;
     useEffect(() => {
-        if(!token) navigate("/signup");
-        else {
-            axios.get(`https://netflix-clone-server-fi53.onrender.com/recently/${token}`)
-            .then(res => {
+        axios.get("https://netflix-clone-server-fi53.onrender.com/recently")
+        .then(res => {
+            if(res.data.message === "Unauthorized") {
+                console.log(res.data.message);
+                navigate("/signup");
+            }
+            else {
                 setRecently(res.data.recently);
-            })
-        }
-    }, [token])
+            }
+        })
+    }, [])
 
     
     return (
         <>
-            <Navbar token={token}/>
+            <Navbar/>
             <div className={styles["container-grid"]}>
                 <div className={styles["container-grid-2col"]}>
                     <h1>Only on Netflix</h1>
