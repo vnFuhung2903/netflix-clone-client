@@ -6,7 +6,6 @@ import { faPlay, faAdd, faCheck } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../../../components/Navbar/Navbar";
 import Footer from "../../../components/Footer/Footer";
 import VideoSwiper from "../../../components/VideoSwiper/VideoSwiper";
-import api_key from "../../../api_key";
 import styles from './Movie.module.scss';
 
 
@@ -17,9 +16,9 @@ export default function Movie() {
     const { id } = useParams();
     const token = sessionStorage.getItem("token");
     
-    const details_url = `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`;
-    const credits_url = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}`;
-    const recommendations_url = `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${api_key}`;
+    const details_url = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}`;
+    const credits_url = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}`;
+    const recommendations_url = `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.REACT_APP_API_KEY}`;
     
     const [Movie, setMovie] = useState({});
     const [release_year, setRelease_year] = useState("");

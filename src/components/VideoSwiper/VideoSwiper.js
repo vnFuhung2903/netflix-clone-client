@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import api_key from "../../api_key";
 import styles from './VideoSwiper.module.scss';
 import "swiper/css";
 import "swiper/css/navigation";
@@ -11,7 +10,7 @@ import "swiper/css/navigation";
 
 const yt_url = `https://www.youtube.com/embed/`;
 export default function VideoSwiper({ type, id }) {
-    const videos_url = `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${api_key}`;
+    const videos_url = `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}`;
     const [videos, setVideos] = useState([]);
     const swiperRef = useRef(null);
 

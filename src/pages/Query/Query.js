@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
-import api_key from "../../api_key";
 import styles from "./Query.module.scss";
 
 
@@ -13,8 +12,8 @@ const Query = () => {
     const [movieList, setMovieList] = useState([]);
     const [tvList, setTVList] = useState([]);
 
-    const search_movie_url = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${search}`;
-    const search_tv_url = `https://api.themoviedb.org/3/search/tv?api_key=${api_key}&query=${search}`;
+    const search_movie_url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${search}`;
+    const search_tv_url = `https://api.themoviedb.org/3/search/tv?api_key=${process.env.REACT_APP_API_KEY}&query=${search}`;
 
     useEffect(() => {
         fetch(search_movie_url)

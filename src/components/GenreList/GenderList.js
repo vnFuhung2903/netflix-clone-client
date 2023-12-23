@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import api_key from "../../api_key";
 import styles from "./GenreList.module.scss";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -13,7 +12,7 @@ import "swiper/css/navigation";
 const image_url = 'https://image.tmdb.org/t/p/w300';
 
 export default function GenreList({ type, genre_id }) {
-    const genre_search_url = `https://api.themoviedb.org/3/discover/${type}?api_key=${api_key}&with_genres=${genre_id}`;
+    const genre_search_url = `https://api.themoviedb.org/3/discover/${type}?api_key=${process.env.REACT_APP_API_KEY}&with_genres=${genre_id}`;
     
     const [list, setList] = useState([]);
     const swiperRef = useRef(null);

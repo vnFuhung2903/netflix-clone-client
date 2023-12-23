@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import api_key from "../../api_key";
 import styles from "./TVSeason.module.scss";
 
 
 const image_url = 'https://image.tmdb.org/t/p/original';
 export default function TVSeason({ season_nth, id }) {
-    const videos_url = `https://api.themoviedb.org/3/tv/${id}/season/${season_nth}?api_key=${api_key}`;
+    const videos_url = `https://api.themoviedb.org/3/tv/${id}/season/${season_nth}?api_key=${process.env.REACT_APP_API_KEY}`;
     const [episodes, setEpisodes] = useState([]);
     const [overview, setOverview] = useState("");
     const [release_year, setRelease_year] = useState("");

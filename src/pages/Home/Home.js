@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from 'axios';
-import { Link, useLocation, useNavigate} from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -42,10 +42,10 @@ export default function Home()
     const [recently, setRecently] = useState([]);
     const swiperRef = useRef();
     const navigate = useNavigate();
-    if(!token) navigate("/signup");
     
     axios.defaults.withCredentials = true;
     useEffect(() => {
+        if(!token) navigate("/signup");
         axios.get(`http://localhost:4000/recently/${token}`)
         .then(res => {
             setRecently(res.data.recently);
@@ -82,9 +82,10 @@ export default function Home()
             <div className={styles["slider"]}>
                 <button className={styles["button-prev"]} onClick={() => swiperRef.current.slidePrev()}><FontAwesomeIcon icon={faChevronLeft}/></button>
                 <Swiper
+                    onBeforeInit={(swiper) => swiperRef.current = swiper}
                     modules={Navigation}
                     slidesPerView={4.5}
-                    slidesPerGroup={1}
+                    slidesPerGroup={4}
                     navigation={{
                         prevEl: ".button-prev",
                         nextEl: ".button-next",
@@ -98,8 +99,8 @@ export default function Home()
                             </Link>
                         </SwiperSlide>
                     ))}
-                <button className={styles["button-next"]} onClick={() => swiperRef.current.slideNext()}><FontAwesomeIcon icon={faChevronRight}/></button>
                 </Swiper>
+                <button className={styles["button-next"]} onClick={() => swiperRef.current.slideNext()}><FontAwesomeIcon icon={faChevronRight}/></button>
             </div> }
             <Footer/>
         </>

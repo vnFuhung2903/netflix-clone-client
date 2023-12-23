@@ -7,7 +7,6 @@ import Navbar from "../../../components/Navbar/Navbar";
 import Footer from "../../../components/Footer/Footer";
 import VideoSwiper from "../../../components/VideoSwiper/VideoSwiper";
 import TVSeason from "../../../components/TVSeason/TVSeason";
-import api_key from "../../../api_key";
 import styles from './TV.module.scss';
 import "swiper/css";
 import "swiper/css/navigation";
@@ -18,9 +17,9 @@ export default function TV() {
     const { id } = useParams();
     const token = sessionStorage.getItem("token");
     
-    const details_url = `https://api.themoviedb.org/3/tv/${id}?api_key=${api_key}`;
-    const credits_url = `https://api.themoviedb.org/3/tv/${id}/credits?api_key=${api_key}`;
-    const recommendations_url = `https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${api_key}`;
+    const details_url = `https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.REACT_APP_API_KEY}`;
+    const credits_url = `https://api.themoviedb.org/3/tv/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}`;
+    const recommendations_url = `https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${process.env.REACT_APP_API_KEY}`;
     
     const [TV, setTV] = useState({});
     const [last_air_year, setLast_air_year] = useState("");
