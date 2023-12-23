@@ -11,14 +11,16 @@ const List = () => {
     const token = sessionStorage.getItem("token");
     const [list, setList] = useState([]);
     const navigate = useNavigate();
-    if(!token)  navigate("/signup");
-
+    
     axios.defaults.withCredentials = true;
     useEffect(() => {
-        axios.get(`http://localhost:4000/list/${token}`)
-        .then(res => {
-            setList(res.data.list);
-        })
+        if(!token)  navigate("/signup");
+        else {
+            axios.get(`http://localhost:2903/list/${token}`)
+            .then(res => {
+                setList(res.data.list);
+            })
+        }
     }, [token])
     
     return (

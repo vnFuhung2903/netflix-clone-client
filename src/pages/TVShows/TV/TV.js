@@ -29,8 +29,7 @@ export default function TV() {
     const [season, setSeason] = useState(1);
     const [added, setAdded] = useState(false);
     const navigate = useNavigate();
-    if(!token)  navigate("/signup");
-
+    
     useEffect(() => {
         fetch(details_url)
         .then(res => res.json())
@@ -40,39 +39,42 @@ export default function TV() {
             const temp = []
             for (let i = 0; i < tv.number_of_seasons; i++) 
             if(temp.length < tv.number_of_seasons)
-                temp.push(i + 1);
-            setNum_of_ss(temp)
-        })
-    }, [id]);
+            temp.push(i + 1);
+        setNum_of_ss(temp)
+    })
+}, [id]);
 
-    useEffect(() => {
-        fetch(credits_url)
-        .then(res => res.json())
-        .then(res => {
-            setCasts(res.cast);
-        })
-    }, [id]);
+useEffect(() => {
+    fetch(credits_url)
+    .then(res => res.json())
+    .then(res => {
+        setCasts(res.cast);
+    })
+}, [id]);
 
-    useEffect(() => {
-        fetch(recommendations_url)
-        .then(res => res.json())
-        .then(res => {
-            setRecommended(res.results);
-        })
-    }, [id])
+useEffect(() => {
+    fetch(recommendations_url)
+    .then(res => res.json())
+    .then(res => {
+        setRecommended(res.results);
+    })
+}, [id])
 
-    axios.defaults.withCredentials = true;
-    useEffect(() => {
-        axios.get(`http://localhost:4000/list/${token}/tv/${id}`)
+axios.defaults.withCredentials = true;
+useEffect(() => {
+    if(!token)  navigate("/signup");
+    else {
+        axios.get(`http://localhost:2903/list/${token}/tv/${id}`)
         .then(res => {
             setAdded(res.data.in_list);
         })
+    }
     }, [added])
 
     const AddtoWatchList = () => {
         const type = "tv";
         const feature = TV;
-        axios.post(`http://localhost:4000/list`, { token, type, feature })
+        axios.post(`http://localhost:2903/list`, { token, type, feature })
         .then((res) => {
             setAdded(res.data.in_list);
         })
@@ -81,10 +83,10 @@ export default function TV() {
     const Watch = () => {
         const type = "tv";
         const feature = TV;
-        axios.post(`http://localhost:4000/recently`, { token, type, feature })
+        axios.post(`http://localhost:2903/recently`, { token, type, feature })
     }
 
-    if(Object.keys(TV).length === 0 || Casts.length === 0 || num_of_ss.length === 0) return(<></>)
+    if(!TV || !Casts || !TV.genres) return(<></>)
 
     return (
         <>
@@ -142,7 +144,7 @@ export default function TV() {
                 <h1>More like this</h1>
                 <div className={styles["container_sub-grid-6col"]}>
                     {recommended.slice(0, 12).map((tv) => (
-                        <Link to={`/tv/${tv.id}/${token}`} key={tv.id}>
+                        <Link to={`/tv/${tv.id}`} key={tv.id}>
                             <img src={image_url + tv.poster_path}/>
                         </Link>
                     ))}

@@ -23,7 +23,7 @@ export default function GenreList({ type, genre_id }) {
         .then((res) => setList(res.results))
     }, [genre_id])
     
-    return(
+    return (
     <div className={styles["slider"]}>
         <button className={styles["button-prev"]} onClick={() => swiperRef.current.slidePrev()}><FontAwesomeIcon icon={faChevronLeft}/></button>
         <Swiper

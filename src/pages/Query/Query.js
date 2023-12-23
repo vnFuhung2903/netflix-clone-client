@@ -31,7 +31,7 @@ const Query = () => {
         })
     }, [token, search])
     
-    if(movieList.length === 0 )   return (<></>)
+    if(!movieList.length)   return (<></>)
 
     return (
         <>

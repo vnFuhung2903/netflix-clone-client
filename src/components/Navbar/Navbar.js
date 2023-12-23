@@ -28,7 +28,7 @@ export default function Navbar({token}){
     return (
         <nav className={styles["navbar"]}>
             <div className={styles["navbar_link"]}>
-                <Link to={`/app`} state={token} className={styles["navbar_link_logo"]}>
+                <Link to={`/app`} state={token} className={styles["navbar_link_logo"]} reloadDocument={true}>
                     <img src={logo}/>
                 </Link>
                 {links.map(({name, link}) => (

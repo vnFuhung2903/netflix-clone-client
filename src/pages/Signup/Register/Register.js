@@ -14,7 +14,7 @@ export default function Register() {
     axios.defaults.withCredentials = true;
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:4000/register", { email, password, phone, name })
+        axios.post("http://localhost:2903/register", { email, password, phone, name })
         .then((res) => {
             sessionStorage.setItem("token", res.data.token)
             navigate("/app");

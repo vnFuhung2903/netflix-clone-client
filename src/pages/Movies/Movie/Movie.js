@@ -55,7 +55,7 @@ export default function Movie() {
 
     axios.defaults.withCredentials = true;
     useEffect(() => {
-        axios.get(`http://localhost:4000/list/${token}/movie/${id}`)
+        axios.get(`http://localhost:2903/list/${token}/movie/${id}`)
         .then(res => {
             setAdded(res.data.in_list);
         })
@@ -64,7 +64,7 @@ export default function Movie() {
     const AddtoWatchList = () => {
         const type = "movie";
         const feature = Movie;
-        axios.post(`http://localhost:4000/list`, { token, type, feature })
+        axios.post(`http://localhost:2903/list`, { token, type, feature })
         .then((res) => {
             console.log(res.data.in_list);
             setAdded(res.data.in_list);
@@ -74,10 +74,10 @@ export default function Movie() {
     const Watch = () => {
         const type = "movie";
         const feature = Movie;
-        axios.post(`http://localhost:4000/recently`, { token, type, feature })
+        axios.post(`http://localhost:2903/recently`, { token, type, feature })
     }
 
-    if(Object.keys(Movie).length === 0 || Casts.length === 0) return(<></>)
+    if(!Movie || !Casts || !Movie.genres) return(<></>)
 
     return (
         <>
@@ -91,7 +91,10 @@ export default function Movie() {
                         <p className={styles["_details"]}>{release_year} | {Movie.runtime}m | {Movie.genres[0].name}</p>
                         <p>{Movie.overview}</p>
                         <span className={styles["_details"]}>Starring: </span>
-                        <span>{Casts[0].name}, {Casts[1].name}, {Casts[2].name}</span>
+                        {Casts.slice(0, 3).map((actor) => (
+                            <span key={actor.name}>{actor.name}, </span>
+                        ))}
+                        <span>...</span>
                         <div className={styles["_button"]}>
                             <button className={styles["_button-red"]} onClick={Watch}> <FontAwesomeIcon icon={faPlay}/> PLAY</button>
                             <button className={styles["_button-transparent"]} onClick={AddtoWatchList}> { added ? <FontAwesomeIcon icon={faCheck}/> : <FontAwesomeIcon icon={faAdd}/> } MY LIST</button>
@@ -122,7 +125,7 @@ export default function Movie() {
                 <h1>More like this</h1>
                 <div className={styles["container_sub-grid-6col"]}>
                     {recommended.slice(0, 12).map((movie) => (
-                        <Link to={`/movie/${movie.id}/${token}`} key={movie.id}>
+                        <Link to={`/movie/${movie.id}`} key={movie.id}>
                             <img src={image_url + movie.poster_path}/>
                         </Link>
                     ))}

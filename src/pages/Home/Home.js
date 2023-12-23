@@ -46,10 +46,12 @@ export default function Home()
     axios.defaults.withCredentials = true;
     useEffect(() => {
         if(!token) navigate("/signup");
-        axios.get(`http://localhost:4000/recently/${token}`)
-        .then(res => {
-            setRecently(res.data.recently);
-        })
+        else {
+            axios.get(`http://localhost:2903/recently/${token}`)
+            .then(res => {
+                setRecently(res.data.recently);
+            })
+        }
     }, [token])
 
     

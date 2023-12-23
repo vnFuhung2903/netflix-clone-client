@@ -11,12 +11,11 @@ import logo from "../../01_Netflix_Logo_RGB/Netflix_Logo_RGB.png";
 export default function Signup(){
     const [email, setEmail] = useState("");
     const navigate = useNavigate();
-    const [error, setError] = useState("");
 
     axios.defaults.withCredentials = true;
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:4000/signup", { email })
+        axios.post("http://localhost:2903/signup", { email })
         .then(res => {
             if(res.data.message === "Signup success") {
                 navigate("/register", { state: email });
