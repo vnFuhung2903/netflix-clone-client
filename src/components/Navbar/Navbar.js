@@ -42,7 +42,7 @@ export default function Navbar(){
             <div className={styles["navbar_user"]}>
                 <div className={`${styles["searchbar"]} ${showSearch && styles["searchbar-visible"]}`}>
                     <input type="text" placeholder="Search..." onChange={(e) => setSearch(e.target.value)} onKeyDown={(e) => {if(e.key === "Enter") navigate(`/query/${search}`)}}/>
-                    <button onMouseOver={() => setShowSearch(1)} onClick={() => navigate(`/query/${search}`)}> <FontAwesomeIcon icon={faMagnifyingGlass}/></button>
+                    <button onMouseOver={() => setShowSearch(1)} onClick={() => { if(search !== "") navigate(`/query/${search}`)}}> <FontAwesomeIcon icon={faMagnifyingGlass}/></button>
                 </div>
                 <button className={styles["navbar_user_icon"]} onClick={handleSignout}> <FontAwesomeIcon icon={faRightFromBracket} /></button>
             </div>

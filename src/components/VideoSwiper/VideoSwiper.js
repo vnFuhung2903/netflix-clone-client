@@ -13,6 +13,7 @@ export default function VideoSwiper({ type, id }) {
     const videos_url = `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}`;
     const [videos, setVideos] = useState([]);
     const swiperRef = useRef(null);
+    const scale = window.screen.availWidth / 456;
 
     useEffect(() => {
         fetch(videos_url)
@@ -22,7 +23,7 @@ export default function VideoSwiper({ type, id }) {
         })
     }, [type, id])
 
-    if(!videos || videos.length <= 2) {
+    if(!videos || (videos.length <= 2 && scale > 2)) {
         return (
             <div className={styles["card-grid"]}>
                 {!videos || videos.map((video) => (
@@ -41,8 +42,8 @@ export default function VideoSwiper({ type, id }) {
             <Swiper
                 onBeforeInit={(swiper) => swiperRef.current = swiper}
                 modules={Navigation}
-                slidesPerView={2.1}
-                slidesPerGroup={1}
+                slidesPerView={Math.min(2.1, Math.max(scale - 0.5, 1))}
+                slidesPerGroup={Math.min(2, Math.floor(Math.max(scale - 0.5, 1)))}
                 navigation={{
                     prevEl: ".button-prev",
                     nextEl: ".button-next",

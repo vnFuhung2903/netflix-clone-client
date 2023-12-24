@@ -40,6 +40,8 @@ export default function Home()
     const [recently, setRecently] = useState([]);
     const swiperRef = useRef();
     const navigate = useNavigate();
+
+    const scale = window.screen.availWidth / 300;
     
     axios.defaults.withCredentials = true;
     useEffect(() => {
@@ -72,7 +74,7 @@ export default function Home()
             </div>
 
             <h4>Recently watched</h4>
-            { recently.length <= 4 ? 
+            { recently.length <= 4 && scale > 4.5 ? 
             <div className={styles["card-grid"]}>
                 {!recently || recently.map((movie) => (
                     <Link to={`/${movie.type}/${movie.feature.id}`} key={movie.feature.id} className={styles["feature"]}>
@@ -87,8 +89,8 @@ export default function Home()
                 <Swiper
                     onBeforeInit={(swiper) => swiperRef.current = swiper}
                     modules={Navigation}
-                    slidesPerView={4.5}
-                    slidesPerGroup={4}
+                    slidesPerView={Math.min(4.5, Math.max(scale - 0.5, 1))}
+                    slidesPerGroup={Math.min(4, Math.floor(Math.max(scale - 0.5, 1)))}
                     navigation={{
                         prevEl: ".button-prev",
                         nextEl: ".button-next",

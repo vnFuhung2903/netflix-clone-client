@@ -3,6 +3,14 @@
     grid-template-columns: repeat(6, 1fr);
     padding: 0.8rem 2.8rem;
 
+    @media screen and (max-width: 1280px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media screen and (max-width: 550px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     img {
         margin: 0 0 0.5rem 0.8rem;
         object-fit: cover;

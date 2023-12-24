@@ -17,6 +17,8 @@ export default function GenreList({ type, genre_id }) {
     const [list, setList] = useState([]);
     const swiperRef = useRef(null);
 
+    const scale = window.screen.availWidth / 300;
+
     useEffect(() => {
         fetch(genre_search_url)
         .then((res) => res.json())
@@ -29,8 +31,8 @@ export default function GenreList({ type, genre_id }) {
         <Swiper
             onBeforeInit={(swiper) => swiperRef.current = swiper}
             modules={Navigation}
-            slidesPerView={4.5}
-            slidesPerGroup={4}
+            slidesPerView={Math.min(4.5, Math.max(scale - 0.5, 1))}
+            slidesPerGroup={Math.min(4, Math.floor(Math.max(scale - 0.5, 1)))}
             navigation={{
                 prevEl: ".button-prev",
                 nextEl: ".button-next",

@@ -3,7 +3,16 @@
     overflow-x: hidden;
 
     img {
-        width: 100vw;
+        @media screen and (min-width: 1281px) { 
+            width: 100vw;
+        }
+        @media screen and (max-width: 1280px) { 
+            height: 100vh;
+        }
+        @media screen and (max-width: 550px) { 
+            width: 100vw;
+            object-fit: cover;
+        }
     }
 }
 
@@ -18,10 +27,27 @@
     align-items: flex-end;
     overflow: hidden;
 
+    @media screen and (max-width: 1280px) { 
+        align-items: center;
+    }
+    @media screen and (max-width: 550px) { 
+        align-items: center;
+    }
+
     .card-jcenter {
         background-color: rgba(0,0,0,0.7);
-        width: 28vw;
-        height: 90vh;
+        @media screen and (min-width: 1281px) { 
+            width: 28vw;
+            height: 90vh;
+        }
+        @media screen and (max-width: 1280px) { 
+            width: 50vw;
+            height: 70vh;
+        }
+        @media screen and (max-width: 550px) { 
+            width: 70vw;
+            height: 70vh;
+        }
         display: flex;
         flex-direction: column;
         color: rgba(200,200,200,0.8);
