@@ -1,6 +1,7 @@
 # Netflix clone using MERN by vnFuhung2903
 
 A movie app allows users to watch movies, tv shows on an internet-connected device. This repository only contains the **_frontend_** code.
+The **_backend_** code is in the [backend repository](https://github.com/vnFuhung2903/netflix-clone-server)
 
 Demo: [Netflixbyvnfuhung2903](https://netflixbyvnfuhung2903.vercel.app)
 
@@ -101,4 +102,4 @@ REFRESH_TOKEN_SECRET= your secret key to generate token
 
 ## License
 
-This project is licensed under the MIT License
+This project is licensed under the [MIT License](https://github.com/vnFuhung2903/netflix-clone-client/blob/main/LICENSE)
