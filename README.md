@@ -1,7 +1,7 @@
 # Netflix clone using MERN by vnFuhung2903
 
-A movie app allows users to watch movies, tv shows on an internet-connected device. This repository only contains the **_frontend_** code.
-The **_backend_** code is in the [backend repository](https://github.com/vnFuhung2903/netflix-clone-server)
+A web app allows users to watch movies, tv shows on an internet-connected device. This repository only contains the **_frontend_** code.
+The **_backend_** code is in the [backend repository](https://github.com/vnFuhung2903/netflix-clone-server).
 
 Demo: [Netflixbyvnfuhung2903](https://netflixbyvnfuhung2903.vercel.app)
 
@@ -19,7 +19,7 @@ Demo: [Netflixbyvnfuhung2903](https://netflixbyvnfuhung2903.vercel.app)
 
 ![Screenshot 2023-12-31 183608](https://github.com/vnFuhung2903/netflix-clone-client/assets/105798742/af97ecfe-421b-46cf-84ba-d42dc4bc29c4)
 
-## Table of content
+## Table of Contents
 
 - [Project Overview](#project-overview)
 - [Features](#features)
@@ -29,14 +29,14 @@ Demo: [Netflixbyvnfuhung2903](https://netflixbyvnfuhung2903.vercel.app)
 
 ## Project Overview
 
-The project is a fullstack app built using MERN (MongoDB, Express.js, React.js, Node.js) stack. Movies and tv shows data is retrieved from TMDB (themoviedb). 
+The project is a fullstack web application built using MERN (MongoDB, Express.js, React.js, Node.js) stack. Movies and tv shows data is retrieved from TMDB (themoviedb). 
 
 ### API Links
 
-Here are the links of the TMDB API:
+Here are the links to the TMDB API:
 
-- For [registering for an API Key](https://www.themoviedb.org/settings/api)
-- For [API reference](https://developer.themoviedb.org/reference)
+- For [registering for an API key](https://www.themoviedb.org/settings/api)
+- For [API Reference](https://developer.themoviedb.org/reference)
 
 ## Features
 
@@ -102,4 +102,4 @@ REFRESH_TOKEN_SECRET= your secret key to generate token
 
 ## License
 
-This project is licensed under the [MIT License](https://github.com/vnFuhung2903/netflix-clone-client/blob/main/LICENSE)
+This project is licensed under the [MIT License](LICENSE).
