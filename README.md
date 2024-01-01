@@ -6,15 +6,13 @@ Demo: [Netflixbyvnfuhung2903](https://netflixbyvnfuhung2903.vercel.app)
 
 ## Preview
 
-![Screenshot 2023-12-31 183430](https://github.com/vnFuhung2903/netflix-clone-client/assets/105798742/e57e0605-268e-45fa-8f15-587985c6a33f)
+![Screenshot 2024-01-01 071254](https://github.com/vnFuhung2903/netflix-clone-client/assets/105798742/6323f730-7349-47fc-be95-70ad832317d2)
 
-![Screenshot 2023-12-31 183456](https://github.com/vnFuhung2903/netflix-clone-client/assets/105798742/a296531f-31f0-4da2-bf75-b06e786e893b)
+![Screenshot 2024-01-01 071129](https://github.com/vnFuhung2903/netflix-clone-client/assets/105798742/833b09a0-2687-47ed-8cf1-6efa961df632)
 
-![Screenshot 2023-12-31 183626](https://github.com/vnFuhung2903/netflix-clone-client/assets/105798742/758e0a19-e2c3-4d69-99eb-c9938160ee5c)
+![Screenshot 2024-01-01 070926](https://github.com/vnFuhung2903/netflix-clone-client/assets/105798742/ea327f90-cc4d-41e1-a0d1-523d85ffd3cc)
 
-![Screenshot 2023-12-31 183517](https://github.com/vnFuhung2903/netflix-clone-client/assets/105798742/a818b8ae-a6ee-4d06-b17f-861421b2007b)
-
-![Screenshot 2023-12-31 183547](https://github.com/vnFuhung2903/netflix-clone-client/assets/105798742/5669bc89-955f-45bb-bb8c-6b28d9bce088)
+![Screenshot 2024-01-01 070956](https://github.com/vnFuhung2903/netflix-clone-client/assets/105798742/1436b554-9879-47f8-a38e-089cbe6eda81)
 
 ![Screenshot 2023-12-31 183608](https://github.com/vnFuhung2903/netflix-clone-client/assets/105798742/af97ecfe-421b-46cf-84ba-d42dc4bc29c4)
 
